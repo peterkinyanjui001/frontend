@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin - Upload Painting</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .price-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .price-group input {
+      width: 100px;
+    }
+    .currency-display {
+      font-weight: bold;
+    }
+    #previewImage {
+      margin-top: 10px;
+      max-width: 300px;
+      height: auto;
+      border: 1px solid #ccc;
+    }
+    .painting-list {
+      margin-top: 30px;
+    }
+    .painting-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+    .painting-item img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Admin Panel - Upload Painting</h1>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="store.html">Store</a>
+    </nav>
+  </header>
+
+  <main>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <label>Title:
+        <input type="text" name="title" required>
+      </label><br>
+
+      <label>Price:
+        <div class="price-group">
+          <input type="number" name="price" id="price" required>
+          <select name="currency" id="currencySelect" required>
+            <option value="">Select</option>
+            <option value="USD" selected>USD</option>
+            <option value="EUR">EUR</option>
+            <option value="KES">KES</option>
+            <option value="GBP">GBP</option>
+            <option value="JPY">JPY</option>
+            <option value="CNY">CNY</option>
+            <option value="INR">INR</option>
+            <option value="ZAR">ZAR</option>
+            <option value="NGN">NGN</option>
+          </select>
+          <span class="currency-display" id="currencyDisplay">USD</span>
+        </div>
+      </label><br>
+
+      <label>Description:
+        <input type="text" name="description">
+      </label><br>
+
+      <label>Image:
+        <input type="file" name="image" accept="image/*" id="imageInput" required>
+      </label><br>
+
+      <img id="previewImage" src="#" alt="Preview" style="display: none;"><br>
+
+      <button type="submit">Upload</button>
+    </form>
+
+    <section class="painting-list" id="paintingList">
+      <h2>Recent Paintings</h2>
+      <div id="paintingsContainer">Loading...</div>
+    </section>
+  </main>
+
+  <script>
+    const currencySelect = document.getElementById('currencySelect');
+    const currencyDisplay = document.getElementById('currencyDisplay');
+    const imageInput = document.getElementById('imageInput');
+    const previewImage = document.getElementById('previewImage');
+    const paintingList = document.getElementById('paintingsContainer');
+
+    currencySelect.addEventListener('change', () => {
+      currencyDisplay.textContent = currencySelect.value;
+    });
+
+    imageInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        previewImage.style.display = 'block';
+        previewImage.src = URL.createObjectURL(file);
+      } else {
+        previewImage.style.display = 'none';
+      }
+    });
+
+    document.getElementById('uploadForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      try {
+        const res = await fetch('http://localhost:3000/upload', {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await res.json();
+        alert(result.message || 'Upload failed');
+
+        this.reset();
+        previewImage.style.display = 'none';
+        currencyDisplay.textContent = 'USD';
+        loadPaintings();
+      } catch (err) {
+        console.error(err);
+        alert('Failed to connect to server');
+      }
+    });
+
+    let allPaintings = [];
+
+    function renderPaintings(paintings) {
+      paintingList.innerHTML = '';
+      if (paintings.length === 0) {
+        paintingList.innerHTML = '<p>No paintings available.</p>';
+        return;
+      }
+      paintings.forEach(painting => {
+        const item = document.createElement('div');
+        item.className = 'painting-item';
+        item.innerHTML = `
+          <h3>${painting.title}</h3>
+          <p><strong>Price:</strong> ${painting.price} ${painting.currency}</p>
+          <p><strong>Description:</strong> ${painting.description}</p>
+          <img src="http://localhost:3000${painting.image_path}" alt="${painting.title}">
+        `;
+        paintingList.appendChild(item);
+      });
+    }
+
+    async function loadPaintings() {
+      try {
+        const res = await fetch('http://localhost:3000/paintings');
+        const data = await res.json();
+        allPaintings = data;
+        renderPaintings(allPaintings);
+      } catch (err) {
+        paintingList.innerHTML = '<p style="color:red;">Failed to load paintings.</p>';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', loadPaintings);
+  </script>
+</body>
+</html>
+

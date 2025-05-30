@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Peter Painter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Gallery - Peter Painter</h1>
+
+    <div class="social-icons">
+      <a href="https://www.youtube.com/@PETER_PAINTER">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/575/small/youtube-logo-youtube-icon-transparent-free-png.png" height="60" width="60" alt="YouTube">
+      </a>
+      <a href="https://www.instagram.com">
+        <img src="https://cdn-icons-png.flaticon.com/512/4138/4138124.png" height="40" width="40" alt="Instagram">
+      </a>
+      <a href="https://www.tiktok.com/@peter_painterr">
+        <img src="https://cdn-icons-png.flaticon.com/128/4782/4782345.png" height="40" width="40" alt="TikTok">
+      </a>
+    </div>
+
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="biography.html">Biography</a>
+      <a href="contact.html">Contact</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="store.html">Store</a>
+      <a href="shipping.html">Shipping</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Art Collection</h2>
+      <div id="gallery-container" class="artworks-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; peterpainter.com 2025. All rights reserved.
+  </footer>
+
+  <script>
+    fetch('http://localhost:3000/paintings')
+      .then(res => res.json())
+      .then(paintings => {
+        const gallery = document.getElementById('gallery-container');
+        gallery.innerHTML = '';
+
+        if (paintings.length === 0) {
+          gallery.innerHTML = '<p>No paintings available at the moment.</p>';
+          return;
+        }
+
+        paintings.forEach(painting => {
+          const item = document.createElement('div');
+          item.classList.add('artwork-item');
+          item.innerHTML = `
+            <img src="http://localhost:3000${painting.image_path}" alt="${painting.title}">
+            <strong>${painting.title}</strong>
+            <p>${painting.price} ${painting.currency}</p>
+            <p>${painting.description}</p>
+          `;
+          gallery.appendChild(item);
+        });
+      })
+      .catch(err => {
+        console.error('Failed to fetch paintings:', err);
+        document.getElementById('gallery-container').innerHTML = '<p style="color:red;">Failed to load paintings.</p>';
+      });
+  </script>
+</body>
+</html>

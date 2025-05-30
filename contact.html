@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Peter Painter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Contact Peter Painter</h1>
+        
+        <div class="social-icons">
+            <a href="https://www.youtube.com/@PETER_PAINTER">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/575/small/youtube-logo-youtube-icon-transparent-free-png.png" height="60" width="60">
+            </a>
+            <a href="https://www.instagram.com">
+                <img src="https://cdn-icons-png.flaticon.com/512/4138/4138124.png" height="40" width="40">
+            </a>
+            <a href="https://www.tiktok.com/@peter_painterr">
+                <img src="https://cdn-icons-png.flaticon.com/128/4782/4782345.png" height="40" width="40">
+            </a>
+        </div>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="biography.html">Biography</a>
+            <a href="contact.html">Contact</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="store.html">Store</a>
+            <a href="shipping.html">Shipping</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Get in Touch</h2>
+            <form action="#" method="POST">
+                <label for="name"><strong>Name*</strong></label>
+                <input type="text" id="name" name="name" placeholder="Your name" required><br><br>
+                
+                <label for="lastname"><strong>Last Name*</strong></label>
+                <input type="text" id="lastname" name="lastname" placeholder="Your last name"><br><br>
+                
+                <label for="email"><strong>Your Email*</strong></label>
+                <input type="email" id="email" name="email" placeholder="Your email address" required><br><br>
+                
+                <label for="service"><strong>Choose Service*</strong></label>
+                <select id="service" name="service"><br><br>
+                    <option value="buy-original">Buy Original Art</option>
+                    <option value="buy-prints">Buy Prints</option>
+                    <option value="commission-order">Commission Order</option>
+                </select><br><br>
+                
+                <label for="message"><strong>Message*</strong></label>
+                <textarea id="message" name="message" placeholder="Enter your message" required></textarea><br>
+                
+                <button type="submit">Send</button>
+            </form>
+        </section>
+        
+        <section>
+            <h2>Subscribe Here</h2>
+            <form action="#" method="POST">
+                <label for="subscribe-email"><strong>Email Address*</strong></label>
+                <input type="email" id="subscribe-email" name="subscribe-email" placeholder="Your email address" required><br><br>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        &copy; peterpainter.com 2025. All rights reserved.
+    </footer>
+</body>
+</html>

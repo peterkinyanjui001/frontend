@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home - PeterPainter</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Fixed Header -->
+  <header>
+    <div class="social-icons">
+      <a href="https://www.youtube.com/@PETER_PAINTER" target="_blank">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/575/small/youtube-logo-youtube-icon-transparent-free-png.png" height="60" width="60" alt="YouTube">
+      </a>
+      <a href="https://www.tiktok.com/@peter_painterr" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/4138/4138124.png" height="40" width="40" alt="TikTok 1">
+      </a>
+      <a href="https://www.tiktok.com/@peter_painterr" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/128/4782/4782345.png" height="40" width="40" alt="TikTok 2">
+      </a>
+    </div>
+
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="biography.html">Biography</a>
+      <a href="contact.html">Contact</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="store.html">Store</a>
+      <a href="shipping.html">Shipping</a>
+    </nav>
+  </header>
+
+  <!-- Landing Section with Background -->
+  <section class="landing" id="landing">
+    <div class="landing-content">
+      <h1>Welcome to PeterPainter's Online Art Studio</h1>
+      <p>Discover unique paintings and creative expressions.</p>
+      <a href="gallery.html" class="button">Enter Gallery</a>
+    </div>
+  </section>
+  <script>
+  const images = [
+    'https://source.unsplash.com/1600x900/?art,painting',
+    'https://source.unsplash.com/1600x900/?abstract,painting',
+    'https://source.unsplash.com/1600x900/?canvas,paint',
+    'https://source.unsplash.com/1600x900/?colors,art',
+    'https://source.unsplash.com/1600x900/?oil,painting'
+  ];
+
+  let currentIndex = 0;
+
+  function changeBackground() {
+    const landing = document.querySelector('.landing');
+    landing.style.background = `
+      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url('${images[currentIndex]}') no-repeat center center / cover
+    `;
+    currentIndex = (currentIndex + 1) % images.length;
+  }
+
+  // Initial load
+  changeBackground();
+  // Change every 5 seconds
+  setInterval(changeBackground, 5000);
+</script>
+
+
+</body>
+</html>

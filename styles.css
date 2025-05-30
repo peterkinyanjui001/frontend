@@ -1,0 +1,431 @@
+* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+/* styles.css */
+
+/* Reset body margins and set full height */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Full-screen landing background */
+.landing {
+    background-image: url('https://i.pinimg.com/736x/3e/1b/cf/3e1bcf50df82f13f98ecd49c3b6a9755.jpg'); /* Change to your correct path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Full viewport height */
+    width: 100vw;  /* Full viewport width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Optional dark overlay for text readability */
+.landing::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+/* Content stays above overlay */
+.landing-content {
+    z-index: 2;
+    position: relative;
+    padding: 20px;
+}
+
+/* Button styling */
+.landing .button {
+    background-color: #ff5722;
+    padding: 12px 24px;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    display: inline-block;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.landing .button:hover {
+    background-color: #e64a19;
+}
+
+
+
+/* Remove Underline from Links and Headings */
+a, h1, h2, h3, h4, h5, h6 {
+    text-decoration: none;
+}
+
+/* Remove Horizontal Lines (Blue Underlines) */
+h2 {
+    font-size: 26px;
+    color: #007bff;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: none;
+}
+
+/* Header */
+header {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Navigation */
+nav {
+    background: #444;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0 15px;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background: #007bff;
+    color: white;
+}
+
+/* Main Content */
+main {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Sections */
+section {
+    margin-bottom: 30px;
+}
+
+/* Buttons */
+button, .button {
+    background: #007bff;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover, .button:hover {
+    background: #0056b3;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer nav {
+    background: none;
+    padding: 10px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+/* Contact Information */
+.contact-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.contact-info img {
+    width: 25px;
+    height: 25px;
+}
+
+/* Gallery Page */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.gallery-item {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Store Page */
+.store-item {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.store-item:hover {
+    transform: scale(1.05);
+}
+
+.store-item img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Shipping Page */
+.shipping-info {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shipping-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.shipping-info li {
+    background: #e0f2ff;
+    padding: 12px;
+    margin: 5px 0;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+/* Forms */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+form textarea {
+    resize: vertical;
+    height: 120px;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+form button:hover {
+    background: #0056b3;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    nav a {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    form {
+        max-width: 100%;
+        padding: 15px;
+    }
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+.social-icons {
+    display: flex; /* Arrange elements horizontally */
+    justify-content: flex-end; /* Move icons to the right */
+    align-items: center; /* Align items properly */
+    gap: 10px; /* Space between icons */
+    padding: 10px 20px; /* Add spacing */
+}
+/* Landing Page */
+.landing {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://source.unsplash.com/1600x900/?art,painting') no-repeat center center/cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+  }
+  
+  .landing-content {
+    max-width: 600px;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .landing h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .landing p {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .landing .button {
+    background: #007bff;
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+  
+  .landing .button:hover {
+    background: #0056b3;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  /* Store Page - Updated Layout */
+.artworks-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.artwork-item {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.artwork-item:hover {
+    transform: scale(1.05);
+}
+
+.artwork-item img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.artwork-item strong {
+    display: block;
+    font-size: 20px;
+    color: #007bff;
+    margin-bottom: 8px;
+}
+
+.artwork-item p {
+    margin: 5px 0;
+    font-size: 20px;
+}
+
